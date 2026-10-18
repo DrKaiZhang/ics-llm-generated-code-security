@@ -15,6 +15,6 @@ keywords:
   - "security anti-patterns"
 license: MIT
 repository-code: "https://github.com/DrKaiZhang/ics-llm-generated-code-security"
-version: v1.0.0
-doi: 10.5281/zenodo.23444416
+version: v1.0.1
+doi: 10.5281/zenodo.23444415
 date-released: "2026-10-18"
