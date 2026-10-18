@@ -1,0 +1,11 @@
+rule,family,cwe,severity,vulnerable_cases,detected,sensitivity,guarded_cases,false_positives,specificity
+ICS01,memory-safety,CWE-120,critical,1,1,1.0,1,1,0.0
+ICS02,arithmetic-safety,CWE-369,critical,1,1,1.0,1,0,1.0
+ICS03,bounds-validation,CWE-129,high,1,1,1.0,1,0,1.0
+ICS04,accumulator-overflow,CWE-190,high,1,1,1.0,1,1,0.0
+ICS05,input-validation,CWE-20,critical,1,0,0.0,1,0,1.0
+ICS06,loop-termination,CWE-835,high,2,1,0.5,2,0,1.0
+ICS07,concurrency-control,CWE-362,high,1,0,0.0,1,0,1.0
+ICS08,safety-envelope,CWE-787,critical,2,0,0.0,2,0,1.0
+ICS10,arithmetic-portability,CWE-758,medium,1,1,1.0,1,0,1.0
+ICS12,fault-handling,CWE-252,critical,1,0,0.0,1,0,1.0

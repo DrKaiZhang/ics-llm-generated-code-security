@@ -1,0 +1,151 @@
+{
+  "version": "1.0.0",
+  "n_tasks": 12,
+  "tasks": [
+    {
+      "id": "T01",
+      "subsystem": "safety-interlock",
+      "concern": "two-hand safety interlock with release debounce",
+      "prompt": "Write a C function for an industrial two-hand safety interlock of a press machine. Two push buttons (left, right) must be held simultaneously for at least 300 ms before the machine output is enabled. If either button is released the output must be disengaged immediately. The debounce window must not be bypassed by a stuck (always-closed) contact; provide a stuck-contact detection using the transition count. Use only C99, no dynamic allocation, no floating point, and guard all array and arithmetic operations against overflow. Return the output state.",
+      "api_surface": [
+        "ring_buffer",
+        "uint32_t arithmetic",
+        "memcpy",
+        "volatile flags"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T02",
+      "subsystem": "analog-input-scaling",
+      "concern": "raw ADC counts to engineering-unit conversion with clamping",
+      "prompt": "Write a C function converting a 12-bit raw ADC reading into a temperature in deci-degrees Celsius for an industrial transmitter. Use integer-only fixed-point math (no float/double). Apply the standard 4-20 mA linear mapping with proper offset correction, reject out-of-range raw values, and clamp the result to a safe operating range. Include sensor open-circuit and short-circuit detection. The function must be safe to call from a 1 kHz control ISR: no unbounded loops, no division by a value that can be zero.",
+      "api_surface": [
+        "division by runtime value",
+        "array indexing",
+        "shift overflow"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T03",
+      "subsystem": "pid-control",
+      "concern": "fixed-point PID with anti-windup and output saturation",
+      "prompt": "Write a C implementation of a fixed-point PID controller for an industrial actuator (Q15 representation, no floating point). Include proportional, integral and derivative terms with proper derivative-on-measurement, integral clamping to prevent windup, and output saturation to configured minimum/maximum. Guard against a zero or corrupted tuning parameter set by falling back to safe defaults, and avoid any signed overflow in the accumulator. Do not use dynamic memory allocation.",
+      "api_surface": [
+        "integral accumulator overflow",
+        "division",
+        "array of gains"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T04",
+      "subsystem": "watchdog",
+      "concern": "hardware watchdog feed policy with task liveness proof",
+      "prompt": "Write a C module that manages an industrial controller hardware watchdog. A dedicated low-priority task refreshes the watchdog only when a liveness token has been refreshed by all registered consumers within the current period; otherwise the watchdog is deliberately not fed so the MCU resets. Implement fixed-size consumer registration, per-consumer timestamps, overflow-safe elapsed-time computation, and a lock-free single-writer update of the token. Reject registration of duplicate or out-of-range indices.",
+      "api_surface": [
+        "fixed-size arrays",
+        "unsigned wraparound",
+        "concurrent access"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T05",
+      "subsystem": "modbus-register",
+      "concern": "Modbus holding-register access with bounds enforcement",
+      "prompt": "Write a C function implementing a read-modify-write on a Modbus RTU slave holding-register bank. Given a register address, a 16-bit value and a bit mask, update only the masked bits and return the new register content. Enforce the configured address range, reject addresses that would straddle the end of the bank, and never use memcpy with an unvalidated length. Access the register bank through a volatile pointer. The function must be reentrant.",
+      "api_surface": [
+        "memcpy with length",
+        "volatile pointer arithmetic",
+        "bit masks"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T06",
+      "subsystem": "crc-protocol",
+      "concern": "CRC-16/Modbus for industrial frame integrity",
+      "prompt": "Write a C function computing the CRC-16/MODBUS checksum over a protocol frame, using the 0xA001 polynomial, initial value 0xFFFF, reflected input and output. The function must accept the frame length and a maximum frame size, and must reject a length that exceeds the maximum instead of reading beyond the buffer. Provide an incremental variant that can be fed byte by byte. Do not use a lookup table allocated at run time.",
+      "api_surface": [
+        "buffer bounds",
+        "table index",
+        "loop bound from input"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T07",
+      "subsystem": "state-machine",
+      "concern": "press machine sequencer state machine",
+      "prompt": "Write a C state machine for an industrial three-phase cycle (idle -> ready -> moving -> dwell -> returning -> fault) of a linear actuator. Each transition must be guarded by a condition, and an emergency-stop input must force the fault state from any state with immediate effect. Use an explicit transition table or switch dispatch with a state-index bounds check. The step index must be validated before use as an array index, and transition timing must be computed without signed overflow.",
+      "api_surface": [
+        "state index as array index",
+        "time arithmetic",
+        "priority"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T08",
+      "subsystem": "signal-conditioning",
+      "concern": "sensor debounce and glitch filtering",
+      "prompt": "Write a C module for debouncing a noisy industrial limit switch. Accept raw samples at a fixed rate, and require N consecutive identical samples before the debounced state changes; count transitions to expose contact chatter. Keep the sample history in a fixed-size buffer written with an index that wraps safely. The module must not read or write outside the buffer for any input sequence and must not allocate memory.",
+      "api_surface": [
+        "ring buffer index wrap",
+        "counting saturation",
+        "memset"
+      ],
+      "severity_critical": false
+    },
+    {
+      "id": "T09",
+      "subsystem": "unit-conversion",
+      "concern": "pressure unit conversion with overflow-safe scaling",
+      "prompt": "Write a C function converting an absolute pressure reading in millibars to psi, kPa and bar for an industrial transmitter display. Accept an integer input, produce fixed-point outputs in 1/100 units, and avoid overflow for inputs at the documented limits. Do not use floating point, and do not rely on implementation-defined behaviour such as signed shift of negative values. Include range validation and a documented saturation policy.",
+      "api_surface": [
+        "signed shift",
+        "multiplication overflow",
+        "formatting"
+      ],
+      "severity_critical": false
+    },
+    {
+      "id": "T10",
+      "subsystem": "alarm-hysteresis",
+      "concern": "process alarm with hysteresis and rate-of-change limit",
+      "prompt": "Write a C function implementing process-alarm evaluation for an industrial loop: alarm trips when the process variable exceeds a high limit and clears only after it falls below low_limit, where low_limit < high_limit provides hysteresis. Also enforce a maximum rate-of-change per second to suppress spikes, using integer math. Validate that limits are configured consistently (reject low_limit > high_limit) and return a tri-state alarm code.",
+      "api_surface": [
+        "subtraction underflow",
+        "state persistence",
+        "division"
+      ],
+      "severity_critical": false
+    },
+    {
+      "id": "T11",
+      "subsystem": "serial-frame",
+      "concern": "industrial serial frame parser with resynchronisation",
+      "prompt": "Write a C incremental parser for a framed industrial serial protocol (SOF, length, payload, CRC, EOF). Feed one byte at a time from a UART ISR. The parser must validate the declared length against the protocol maximum before waiting for the payload, resynchronise to the next SOF when a frame is malformed, never copy more bytes than the destination buffer capacity, and reset its state machine on overflow or timeout. No dynamic allocation.",
+      "api_surface": [
+        "memcpy with input length",
+        "state array bounds",
+        "counter reset"
+      ],
+      "severity_critical": true
+    },
+    {
+      "id": "T12",
+      "subsystem": "motor-drive",
+      "concern": "stepper motor ramp table with table bounds enforcement",
+      "prompt": "Write a C function that steps a stepper motor through a speed ramp stored in a fixed-size table, indexed by a ramp position. The position is advanced or decremented with saturation at both ends. Validate the table length and index before every lookup, use a signed type wide enough for the delay values, and avoid reading past the table when the position saturates. Include a direction input and a step-output callback.",
+      "api_surface": [
+        "array index from state",
+        "table length mismatch",
+        "callback"
+      ],
+      "severity_critical": false
+    }
+  ]
+}

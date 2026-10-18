@@ -1,0 +1,4 @@
+stage,n_compiling,rate
+as generated,0,0.0
+with include shim,14,0.1944
+with shim and no user main,0,0.0

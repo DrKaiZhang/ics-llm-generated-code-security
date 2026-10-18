@@ -1,0 +1,27 @@
+case_id,concern,variant,expected_rules,reported_rules,n_findings,compile,run,functional_pass,build_log
+V01,unchecked buffer copy fed by a protocol length,vulnerable,ICS01,ICS01,1,ok,assert,0,"check failed at line 21
+FAILED 589439265"
+V01,unchecked buffer copy fed by a protocol length,guarded,ICS01,ICS01,1,ok,ok,1,ALLPASS
+V02,division by an unvalidated divisor,vulnerable,ICS02,ICS02,1,ok,assert,0,
+V02,division by an unvalidated divisor,guarded,ICS02,,0,ok,ok,1,ALLPASS
+V03,unclamped integral accumulator in a control loop,vulnerable,ICS04;ICS08,ICS04,1,ok,assert,0,"check failed at line 19
+FAILED 1"
+V03,unclamped integral accumulator in a control loop,guarded,ICS04;ICS08,ICS04,1,ok,assert,0,"check failed at line 21
+FAILED 1"
+V04,actuator command written without saturation,vulnerable,ICS08,,0,ok,assert,0,"check failed at line 16
+FAILED 1"
+V04,actuator command written without saturation,guarded,ICS08,,0,ok,ok,1,ALLPASS
+V05,index derived from external input without a capacity check,vulnerable,ICS03;ICS06,ICS03,1,ok,assert,0,
+V05,index derived from external input without a capacity check,guarded,ICS03;ICS06,,0,ok,ok,1,ALLPASS
+V06,loop trip count taken from an input length with no bound,vulnerable,ICS06,ICS06,1,ok,ok,1,ALLPASS
+V06,loop trip count taken from an input length with no bound,guarded,ICS06,,0,ok,ok,1,ALLPASS
+V07,safety-relevant call whose result is discarded,vulnerable,ICS12,,0,ok,assert,0,"check failed at line 18
+FAILED 1"
+V07,safety-relevant call whose result is discarded,guarded,ICS12,,0,ok,ok,1,ALLPASS
+V08,shift by a runtime amount,vulnerable,ICS10,ICS10,1,ok,assert,0,
+V08,shift by a runtime amount,guarded,ICS10,,0,ok,ok,1,ALLPASS
+V09,no input validation at all in a setpoint consumer,vulnerable,ICS05,,0,ok,assert,0,"check failed at line 16
+FAILED 1"
+V09,no input validation at all in a setpoint consumer,guarded,ICS05,,0,ok,ok,1,ALLPASS
+V10,unsynchronised read-modify-write on shared ISR state,vulnerable,ICS07,,0,ok,ok,1,ALLPASS
+V10,unsynchronised read-modify-write on shared ISR state,guarded,ICS07,,0,ok,ok,1,ALLPASS

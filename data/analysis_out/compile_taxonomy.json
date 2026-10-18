@@ -1,0 +1,23 @@
+{
+  "n": 72,
+  "compiles_raw": 0,
+  "compiles_with_shim": 14,
+  "compiles_with_shim_no_main": 0,
+  "categories_raw": {
+    "missing-include": 48,
+    "linkage-missing": 14,
+    "other-error": 5,
+    "unknown-type": 3,
+    "syntax-error": 2
+  },
+  "categories_with_shim": {
+    "missing-include": 24,
+    "linkage-missing": 22,
+    "compiles": 14,
+    "other-error": 6,
+    "unknown-type": 4,
+    "syntax-error": 2
+  },
+  "has_main": 32,
+  "median_lines": 46
+}

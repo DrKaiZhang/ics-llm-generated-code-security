@@ -1,0 +1,14 @@
+rule,family,gen_gen_share,human_reference
+ICS02,arithmetic-safety,0.1667,0
+ICS09,state-consistency,0.1528,0
+ICS12,fault-handling,0.1111,0
+ICS08,safety-envelope,0.0833,0
+ICS03,bounds-validation,0.0694,1
+ICS13,degenerate-state,0.0694,0
+ICS01,memory-safety,0.0417,0
+ICS06,loop-termination,0.0417,0
+ICS10,arithmetic-portability,0.0278,0
+ICS04,accumulator-overflow,0.0,0
+ICS05,input-validation,0.0,0
+ICS07,concurrency-control,0.0,0
+ICS11,concurrency-atomicity,0.0,0

@@ -1,0 +1,17 @@
+{
+  "qwen2.5-coder-0.5b": {
+    "hf_repo": "Qwen/Qwen2.5-Coder-0.5B-Instruct",
+    "revision": null,
+    "params": "0.5B",
+    "dtype": "float32",
+    "device": "cpu",
+    "workers": 1,
+    "decoding": {
+      "temperature": 0.8,
+      "top_p": 0.95,
+      "max_new_tokens": 512,
+      "reps_per_task": 6,
+      "seed": 20260101
+    }
+  }
+}

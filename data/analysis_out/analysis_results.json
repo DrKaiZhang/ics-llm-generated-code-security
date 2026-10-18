@@ -1,0 +1,505 @@
+{
+  "population": {
+    "n_generations": 72,
+    "n_models": 1,
+    "n_tasks": 12,
+    "n_functions_total": 151,
+    "median_lines": 45.5
+  },
+  "rq1_compilability": {
+    "n": 72,
+    "compiles_raw": 0,
+    "compiles_with_shim": 14,
+    "compiles_with_shim_no_main": 0,
+    "categories_raw": {
+      "missing-include": 48,
+      "linkage-missing": 14,
+      "other-error": 5,
+      "unknown-type": 3,
+      "syntax-error": 2
+    },
+    "categories_with_shim": {
+      "missing-include": 24,
+      "linkage-missing": 22,
+      "compiles": 14,
+      "other-error": 6,
+      "unknown-type": 4,
+      "syntax-error": 2
+    },
+    "has_main": 32,
+    "median_lines": 46
+  },
+  "rq1_table": [
+    {
+      "stage": "as generated",
+      "n_compiling": 0,
+      "rate": 0.0
+    },
+    {
+      "stage": "with include shim",
+      "n_compiling": 14,
+      "rate": 0.1944
+    },
+    {
+      "stage": "with shim and no user main",
+      "n_compiling": 0,
+      "rate": 0.0
+    }
+  ],
+  "rq2_rules": [
+    {
+      "rule": "ICS02",
+      "family": "arithmetic-safety",
+      "cwe": "CWE-369",
+      "severity": "critical",
+      "n_generations": 12,
+      "gen_rate": 0.1667,
+      "n_findings": 14,
+      "in_human_reference": 0,
+      "description": "integer division or modulo whose divisor is a runtime value without a preceding non-zero guard"
+    },
+    {
+      "rule": "ICS09",
+      "family": "state-consistency",
+      "cwe": "CWE-665",
+      "severity": "high",
+      "n_generations": 11,
+      "gen_rate": 0.1528,
+      "n_findings": 34,
+      "in_human_reference": 0,
+      "description": "control-state variable assigned from a value that is neither a literal nor a validated enumerator"
+    },
+    {
+      "rule": "ICS12",
+      "family": "fault-handling",
+      "cwe": "CWE-252",
+      "severity": "critical",
+      "n_generations": 8,
+      "gen_rate": 0.1111,
+      "n_findings": 28,
+      "in_human_reference": 0,
+      "description": "return value of a safety-relevant call discarded, making a failed safety operation indistinguishable from success"
+    },
+    {
+      "rule": "ICS08",
+      "family": "safety-envelope",
+      "cwe": "CWE-787",
+      "severity": "critical",
+      "n_generations": 6,
+      "gen_rate": 0.0833,
+      "n_findings": 10,
+      "in_human_reference": 0,
+      "description": "actuator, register or output value written without saturation to a configured or physical limit"
+    },
+    {
+      "rule": "ICS03",
+      "family": "bounds-validation",
+      "cwe": "CWE-129",
+      "severity": "high",
+      "n_generations": 5,
+      "gen_rate": 0.0694,
+      "n_findings": 5,
+      "in_human_reference": 1,
+      "description": "array index taken from a variable with no range check against the array capacity in the enclosing scope"
+    },
+    {
+      "rule": "ICS13",
+      "family": "degenerate-state",
+      "cwe": "CWE-561",
+      "severity": "medium",
+      "n_generations": 5,
+      "gen_rate": 0.0694,
+      "n_findings": 7,
+      "in_human_reference": 0,
+      "description": "declaration of control state that is never written, so the initial value is relied upon for a safety decision"
+    },
+    {
+      "rule": "ICS01",
+      "family": "memory-safety",
+      "cwe": "CWE-120",
+      "severity": "critical",
+      "n_generations": 3,
+      "gen_rate": 0.0417,
+      "n_findings": 3,
+      "in_human_reference": 0,
+      "description": "buffer copy whose length is a runtime value rather than a validated compile-time bound"
+    },
+    {
+      "rule": "ICS06",
+      "family": "loop-termination",
+      "cwe": "CWE-835",
+      "severity": "high",
+      "n_generations": 3,
+      "gen_rate": 0.0417,
+      "n_findings": 3,
+      "in_human_reference": 0,
+      "description": "loop whose trip count comes from an input parameter, with no constant bound and no capacity check in scope"
+    },
+    {
+      "rule": "ICS10",
+      "family": "arithmetic-portability",
+      "cwe": "CWE-758",
+      "severity": "medium",
+      "n_generations": 2,
+      "gen_rate": 0.0278,
+      "n_findings": 4,
+      "in_human_reference": 0,
+      "description": "shift by a non-literal amount or reliance on implementation-defined shift of a negative value"
+    },
+    {
+      "rule": "ICS04",
+      "family": "accumulator-overflow",
+      "cwe": "CWE-190",
+      "severity": "high",
+      "n_generations": 0,
+      "gen_rate": 0.0,
+      "n_findings": 0,
+      "in_human_reference": 0,
+      "description": "additive control accumulator with no clamp, so a long-running loop can wrap the signed value"
+    },
+    {
+      "rule": "ICS05",
+      "family": "input-validation",
+      "cwe": "CWE-20",
+      "severity": "critical",
+      "n_generations": 0,
+      "gen_rate": 0.0,
+      "n_findings": 0,
+      "in_human_reference": 0,
+      "description": "function that consumes parameters but performs no relational validation, so no input can be range-checked"
+    },
+    {
+      "rule": "ICS07",
+      "family": "concurrency-control",
+      "cwe": "CWE-362",
+      "severity": "high",
+      "n_generations": 0,
+      "gen_rate": 0.0,
+      "n_findings": 0,
+      "in_human_reference": 0,
+      "description": "read-modify-write on shared control state with no atomic or critical section, in code that documents concurrent/ISR execution"
+    },
+    {
+      "rule": "ICS11",
+      "family": "concurrency-atomicity",
+      "cwe": "CWE-367",
+      "severity": "high",
+      "n_generations": 0,
+      "gen_rate": 0.0,
+      "n_findings": 0,
+      "in_human_reference": 0,
+      "description": "time-of-check/time-of-use: a validity or length value is checked and then re-read for the operation, in code with volatile shared state"
+    }
+  ],
+  "rq2_reference": {
+    "n_findings": 3,
+    "rules": [
+      "ICS03"
+    ]
+  },
+  "rq2_overlap": {
+    "ics_rules_fired": [
+      "ICS01",
+      "ICS02",
+      "ICS03",
+      "ICS06",
+      "ICS08",
+      "ICS09",
+      "ICS10",
+      "ICS12",
+      "ICS13"
+    ],
+    "cppcheck_ids_fired": [],
+    "both": [],
+    "ics_only": [
+      "ICS01",
+      "ICS02",
+      "ICS03",
+      "ICS06",
+      "ICS08",
+      "ICS09",
+      "ICS10",
+      "ICS12",
+      "ICS13"
+    ],
+    "cppcheck_only": []
+  },
+  "rq3": {
+    "critical_task": {
+      "name": "critical",
+      "n": 48,
+      "mean": 1.8542,
+      "sd": 2.2312,
+      "min": 0,
+      "q1": 0.0,
+      "median": 1.0,
+      "q3": 3.0,
+      "max": 10,
+      "iqr": 3.0
+    },
+    "noncritical_task": {
+      "name": "non-critical",
+      "n": 24,
+      "mean": 0.7917,
+      "sd": 1.2504,
+      "min": 0,
+      "q1": 0.0,
+      "median": 0.0,
+      "q3": 1.0,
+      "max": 5,
+      "iqr": 1.0
+    },
+    "spearman_lines_vs_findings": {
+      "rho": 0.6387,
+      "p": 0.0,
+      "n": 72,
+      "t": 6.9457
+    },
+    "spearman_functions_vs_findings": {
+      "rho": 0.2538,
+      "p": 0.031475,
+      "n": 72,
+      "t": 2.1951
+    },
+    "test_critical_vs_noncritical": {
+      "U": 411.0,
+      "z": -2.078,
+      "p": 0.037709,
+      "effect_r": -0.2865,
+      "n_x": 48,
+      "n_y": 24,
+      "cliffs_delta": 0.2865
+    },
+    "per_task": [
+      {
+        "task": "T11",
+        "n": 6,
+        "mean_findings": 4.0,
+        "median": 3.5,
+        "subsystem": "serial-frame"
+      },
+      {
+        "task": "T04",
+        "n": 6,
+        "mean_findings": 3.667,
+        "median": 3.5,
+        "subsystem": "watchdog"
+      },
+      {
+        "task": "T07",
+        "n": 6,
+        "mean_findings": 2.667,
+        "median": 3.0,
+        "subsystem": "state-machine"
+      },
+      {
+        "task": "T03",
+        "n": 6,
+        "mean_findings": 1.833,
+        "median": 2.0,
+        "subsystem": "pid-control"
+      },
+      {
+        "task": "T12",
+        "n": 6,
+        "mean_findings": 1.5,
+        "median": 0.5,
+        "subsystem": "motor-drive"
+      },
+      {
+        "task": "T01",
+        "n": 6,
+        "mean_findings": 1.167,
+        "median": 0.5,
+        "subsystem": "safety-interlock"
+      },
+      {
+        "task": "T08",
+        "n": 6,
+        "mean_findings": 1.167,
+        "median": 1.0,
+        "subsystem": "signal-conditioning"
+      },
+      {
+        "task": "T05",
+        "n": 6,
+        "mean_findings": 1.0,
+        "median": 0.0,
+        "subsystem": "modbus-register"
+      },
+      {
+        "task": "T06",
+        "n": 6,
+        "mean_findings": 0.5,
+        "median": 0.0,
+        "subsystem": "crc-protocol"
+      },
+      {
+        "task": "T09",
+        "n": 6,
+        "mean_findings": 0.5,
+        "median": 0.0,
+        "subsystem": "unit-conversion"
+      },
+      {
+        "task": "T02",
+        "n": 6,
+        "mean_findings": 0.0,
+        "median": 0.0,
+        "subsystem": "analog-input-scaling"
+      },
+      {
+        "task": "T10",
+        "n": 6,
+        "mean_findings": 0.0,
+        "median": 0.0,
+        "subsystem": "alarm-hysteresis"
+      }
+    ]
+  },
+  "severity_profile": {
+    "critical": 55,
+    "high": 42,
+    "medium": 11,
+    "cppcheck_error": 0,
+    "cppcheck_warning": 0,
+    "cppcheck_style": 0,
+    "cppcheck_portability": 0,
+    "generations_with_any_critical": 24,
+    "uses_float": 16,
+    "uses_malloc": 1,
+    "has_user_main": 32
+  },
+  "rule_validation": [
+    {
+      "rule": "ICS01",
+      "family": "memory-safety",
+      "cwe": "CWE-120",
+      "severity": "critical",
+      "vulnerable_cases": "1",
+      "detected": "1",
+      "sensitivity": "1.0",
+      "guarded_cases": "1",
+      "false_positives": "1",
+      "specificity": "0.0"
+    },
+    {
+      "rule": "ICS02",
+      "family": "arithmetic-safety",
+      "cwe": "CWE-369",
+      "severity": "critical",
+      "vulnerable_cases": "1",
+      "detected": "1",
+      "sensitivity": "1.0",
+      "guarded_cases": "1",
+      "false_positives": "0",
+      "specificity": "1.0"
+    },
+    {
+      "rule": "ICS03",
+      "family": "bounds-validation",
+      "cwe": "CWE-129",
+      "severity": "high",
+      "vulnerable_cases": "1",
+      "detected": "1",
+      "sensitivity": "1.0",
+      "guarded_cases": "1",
+      "false_positives": "0",
+      "specificity": "1.0"
+    },
+    {
+      "rule": "ICS04",
+      "family": "accumulator-overflow",
+      "cwe": "CWE-190",
+      "severity": "high",
+      "vulnerable_cases": "1",
+      "detected": "1",
+      "sensitivity": "1.0",
+      "guarded_cases": "1",
+      "false_positives": "1",
+      "specificity": "0.0"
+    },
+    {
+      "rule": "ICS05",
+      "family": "input-validation",
+      "cwe": "CWE-20",
+      "severity": "critical",
+      "vulnerable_cases": "1",
+      "detected": "0",
+      "sensitivity": "0.0",
+      "guarded_cases": "1",
+      "false_positives": "0",
+      "specificity": "1.0"
+    },
+    {
+      "rule": "ICS06",
+      "family": "loop-termination",
+      "cwe": "CWE-835",
+      "severity": "high",
+      "vulnerable_cases": "2",
+      "detected": "1",
+      "sensitivity": "0.5",
+      "guarded_cases": "2",
+      "false_positives": "0",
+      "specificity": "1.0"
+    },
+    {
+      "rule": "ICS07",
+      "family": "concurrency-control",
+      "cwe": "CWE-362",
+      "severity": "high",
+      "vulnerable_cases": "1",
+      "detected": "0",
+      "sensitivity": "0.0",
+      "guarded_cases": "1",
+      "false_positives": "0",
+      "specificity": "1.0"
+    },
+    {
+      "rule": "ICS08",
+      "family": "safety-envelope",
+      "cwe": "CWE-787",
+      "severity": "critical",
+      "vulnerable_cases": "2",
+      "detected": "0",
+      "sensitivity": "0.0",
+      "guarded_cases": "2",
+      "false_positives": "0",
+      "specificity": "1.0"
+    },
+    {
+      "rule": "ICS10",
+      "family": "arithmetic-portability",
+      "cwe": "CWE-758",
+      "severity": "medium",
+      "vulnerable_cases": "1",
+      "detected": "1",
+      "sensitivity": "1.0",
+      "guarded_cases": "1",
+      "false_positives": "0",
+      "specificity": "1.0"
+    },
+    {
+      "rule": "ICS12",
+      "family": "fault-handling",
+      "cwe": "CWE-252",
+      "severity": "critical",
+      "vulnerable_cases": "1",
+      "detected": "0",
+      "sensitivity": "0.0",
+      "guarded_cases": "1",
+      "false_positives": "0",
+      "specificity": "1.0"
+    }
+  ],
+  "rule_validation_summary": {
+    "n_rules": 10,
+    "median_sensitivity": 0.75,
+    "median_specificity": 1.0,
+    "rules_with_sensitivity_1": 5,
+    "rules_with_false_positives": [
+      "ICS01",
+      "ICS04"
+    ]
+  }
+}
